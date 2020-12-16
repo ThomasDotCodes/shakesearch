@@ -1,0 +1,63 @@
+* {
+	font-family: 'IM Fell English', serif;
+}
+
+*, *:before, *:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+	background-color: #424258;
+	background-image: linear-gradient(62deg, #424258 0%, #9a9a9a 100%);
+}
+
+h1 {
+	font-size: 5vw;
+}
+
+h2 {
+	font-size: 4vw;
+}
+
+h3 {
+	font-size: 3vw
+}
+
+h4 {
+	font-size: 2.4vw
+}
+
+h5 {
+	font-size: 2vw
+}
+
+h6 {
+	font-size: 1.8vw
+}
+
+input, button {
+	font-size: 2vw;
+}
+
+input {
+	border: none;
+	border-bottom: black 1px solid;
+}
+
+.inkTitle {
+	font-size: 3vw;
+	font-family: Pirata One, sans-serif;
+	text-align: center;
+	line-height: 3vw;
+	color: black;
+	opacity: 0.6;
+}
+
+.signature {
+	text-align: right;
+	color: black;
+	font-size: 2.5vw;
+}
