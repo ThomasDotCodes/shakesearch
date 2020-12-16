@@ -23,3 +23,20 @@ current state, can be deployed easily on Heroku's free tier.
 
 If you are stronger on the front-end, complete the react-prompt.md in this
 folder.
+
+## Notes
+- Decided to go with css-in-js using emotion instead of an external .scss file. This eliminated the need for node-sass.
+- Client highlights search term agnostic to how server searches for text.
+- Could add caching with minimal effort, but due to Heroku free tier, limiting resources
+
+## Further Improvements
+Based on time/priorities, the following improvements could be made
+
+| points | description              |
+|--------|--------------------------|
+|        | server caching (redis)   |
+|        | results pagination       |
+|        | multiple inputs          |
+|        | user-configured case sensitive search|
+|        |                          |
+|        |                          |

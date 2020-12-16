@@ -6,9 +6,9 @@ export const SearchBox = props => {
 	} = props
 
 	return (
-		<>
-			<input type='text' onChange={onChange}/>
+		<div className={'search-box'}>
+			<input type='text' onChange={onChange} />
 			<button onClick={onClick}>Search</button>
-		</>
+		</div>
 	)
 }

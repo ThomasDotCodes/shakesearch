@@ -11,18 +11,21 @@ import (
 )
 
 func main() {
-	searcher := handlers.Searcher{}
-	err := data.Load("completeworks.txt")
+	// decouple the data from search functionality
+	err := data.LoadTextFromFile("completeworks.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = searcher.Load()
+
+	// since we can instantiate multiple searchers (in theory), pass text to load in on instantiation
+	searcher := handlers.Searcher{}
+	err = searcher.Load(data.CompleteWorks)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// serve frontend
-	fs := http.FileServer(http.Dir("./static/build"))
+	fs := http.FileServer(http.Dir("./client/build"))
 	http.Handle("/", fs)
 
 	// search endpoints
