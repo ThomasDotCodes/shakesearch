@@ -1,27 +1,29 @@
 import {Animate} from 'react-simple-animate'
+import {IoArrowForward as RightArrow} from 'react-icons/all'
+import pluralize from 'pluralize'
 
 export const SearchBox = props => {
 
 	const {
 		searchTerm,
-		play,
 		onClick,
 		onChange,
 		onFocus,
+		results,
 	} = props
 
 	return (
-		<>
-			<Animate
-				play={play}
-				duration={0.5}
-				easeType={'ease-out'}
-				start={{transform: 'translateX(0)'}}
-				end={{transform: 'translateX(-100px)'}}
-			>
-				<div className='search-box'>
+		<div className={'search-box-wrapper'}>
+			<div className='search-box'>
+				<Animate
+					play={results}
+					duration={0.5}
+					easeType={'ease-out'}
+					start={{transform: 'translateX(0)'}}
+					end={{transform: 'translateX(-100px)'}}
+				>
 					<div className={'search-inputs'}>
-						<img className={'icon'} src={'/Vector.png'} alt={'search icon'}/>
+						<div className={'icon'}><img src={'/Vector.png'} alt={'search icon'}/></div>
 						<input
 							type='text'
 							placeholder={`What art thee looking f'r?`}
@@ -33,21 +35,29 @@ export const SearchBox = props => {
 							}}
 							value={searchTerm}
 						/>
-						<button onClick={onClick}>-></button>
+						<Animate
+							play={!results && searchTerm}
+							duration={0.5}
+							easeType={'ease-out'}
+							start={{transform: 'translateX(-100px)', opacity: '0.0'}}
+							end={{transform: 'translateX(0px)', opacity: '1.0'}}
+						>
+						<div className={'icon search'}><RightArrow onClick={onClick} size={'2em'}/></div>
+						</Animate>
 					</div>
-				</div>
-			</Animate>
-			<Animate
-				play={play}
-				duration={0.5}
-				easeType={'ease-out'}
-				start={{transform: 'translateX(0)', opacity: '1.0'}}
-				end={{transform: 'translateX(-200px)', opacity: '0'}}
-			>
-				<div className={'lines'}>
+				</Animate>
+			</div>
+			<div className={'lines'}>
+				<Animate
+					play={results}
+					duration={0.5}
+					easeType={'ease-out'}
+					start={{transform: 'translateX(0)', opacity: '1.0'}}
+					end={{transform: 'translateX(-200px)', opacity: '0'}}
+				>
 					<img src={'/Vector 2.png'} alt={'abstract lines'}/>
-				</div>
-			</Animate>
-		</>
+				</Animate>
+			</div>
+		</div>
 	)
 }

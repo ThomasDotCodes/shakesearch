@@ -49,7 +49,7 @@ function App() {
 				<div className='logo'>Shakesearch</div>
 
 				<SearchBox
-					play={results}
+					results={results}
 					onClick={onSearch}
 					onChange={onSearchInput}
 					onFocus={clearSearchInput}
@@ -61,10 +61,10 @@ function App() {
 				play={results}
 				duration={0.5}
 				easeType={'ease-out'}
-				start={{position: 'absolute', right: '500px', opacity: '1.0'}}
-				end={{position: 'absolute', right: '0px', opacity: '0.0'}}
+				start={{position: 'absolute', right: '0', bottom: '-10px', opacity: '1.0'}}
+				end={{position: 'absolute', right: '-500px', bottom: '-10px', opacity: '0.0'}}
 			>
-				<img className={`william`} src={'/image 28.png'} alt={'william'}/>
+				<img src={'/image 28.png'} alt={'william'}/>
 			</Animate>
 		</>
 	)
