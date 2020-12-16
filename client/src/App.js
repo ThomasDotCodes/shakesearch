@@ -4,9 +4,10 @@ import {useState} from 'react'
 import fetch from 'node-fetch'
 import {SearchBox} from './components/SearchBox'
 import _ from 'lodash'
-import packageJson from '../package.json';
+import packageJson from '../package.json'
+import {Animate} from 'react-simple-animate'
 
-import {ResultsSummary} from './components/ResultsSummary'
+import Highlighter from 'react-highlight-words'
 import {Results} from './components/Results'
 
 function App() {
@@ -20,41 +21,51 @@ function App() {
 
 	const [isLoading, setIsLoading] = useState(false)
 	const [searchTerm, setSearchTerm] = useState('')
-	const [results, setResults] = useState([])
+	const [results, setResults] = useState(null)
 
 	const onSearch = async () => {
 		setIsLoading(true)
 		const response = await fetch(`http://localhost:3001/search?q=${searchTerm}`)
 		const json = await response.json()
-		const sortedResults = _.sortBy(json, 'book')
-		setResults(sortedResults)
+		// sort results in case we want to display them based on alphabetical order of book titles
+		//const sortedResults = _.sortBy(json, 'book')
+		setResults(json)
 		setIsLoading(false)
 	}
 
 	const onSearchInput = (evt) => {
 		setSearchTerm(evt.target.value)
+		setResults(null)
+	}
+
+	const clearSearchInput = (evt) => {
+		setSearchTerm('')
+		setResults(null)
 	}
 
 	return (
 		<>
-			<a name={"top"}/>
 			<div className={'wrapper'}>
-				{/* sidebar */}
-				<div className={'sidebar'}>
-					<h1 className={'logo shake-little shake-slow shake-constant'}>ShakeSearch</h1>
-					<SearchBox onClick={onSearch} onChange={onSearchInput}/>
-					<ResultsSummary results={results} isLoading={isLoading} />
-				</div>
+				<div className='logo'>Shakesearch</div>
 
-				{/* results */}
-				<Results results={results} searchTerm={searchTerm}/>
+				<SearchBox
+					play={results}
+					onClick={onSearch}
+					onChange={onSearchInput}
+					onFocus={clearSearchInput}
+					searchTerm={searchTerm}/>
+
 			</div>
-			<svg>
-				<filter id="displace">
-					<feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="1"/>
-					<feDisplacementMap in="SourceGraphic" scale="5"/>
-				</filter>
-			</svg>
+			<Results results={results} searchTerm={searchTerm}/>
+			<Animate
+				play={results}
+				duration={0.5}
+				easeType={'ease-out'}
+				start={{position: 'absolute', right: '500px', opacity: '1.0'}}
+				end={{position: 'absolute', right: '0px', opacity: '0.0'}}
+			>
+				<img className={`william`} src={'/image 28.png'} alt={'william'}/>
+			</Animate>
 		</>
 	)
 }
