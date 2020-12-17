@@ -1,6 +1,6 @@
+// libraries
 import {Animate} from 'react-simple-animate'
 import {IoArrowForward as RightArrow} from 'react-icons/all'
-import pluralize from 'pluralize'
 
 export const SearchBox = props => {
 
@@ -13,8 +13,8 @@ export const SearchBox = props => {
 	} = props
 
 	return (
-		<div className={'search-box-wrapper'}>
-			<div className='search-box'>
+		<div className={'search-box'}>
+			<div className='search-box-top'>
 				<Animate
 					play={results}
 					duration={0.5}
@@ -23,14 +23,14 @@ export const SearchBox = props => {
 					end={{transform: 'translateX(-100px)'}}
 				>
 					<div className={'search-inputs'}>
-						<div className={'icon'}><img src={'/Vector.png'} alt={'search icon'}/></div>
+						<div className={'icon'}><img src={'/search-icon.png'} alt={'search icon'}/></div>
 						<input
 							type='text'
 							placeholder={`What art thee looking f'r?`}
 							onChange={onChange}
 							onFocus={onFocus}
 							onKeyPress={(evt) => {
-								if (evt.which === 13) onClick(evt)
+								if (evt.key === "Enter") onClick(evt)
 								return false
 							}}
 							value={searchTerm}
@@ -47,7 +47,7 @@ export const SearchBox = props => {
 					</div>
 				</Animate>
 			</div>
-			<div className={'lines'}>
+			<div className={'search-box-bottom'}>
 				<Animate
 					play={results}
 					duration={0.5}
@@ -55,7 +55,7 @@ export const SearchBox = props => {
 					start={{transform: 'translateX(0)', opacity: '1.0'}}
 					end={{transform: 'translateX(-200px)', opacity: '0'}}
 				>
-					<img src={'/Vector 2.png'} alt={'abstract lines'}/>
+					<img src={'/lines.png'} alt={'abstract lines'}/>
 				</Animate>
 			</div>
 		</div>

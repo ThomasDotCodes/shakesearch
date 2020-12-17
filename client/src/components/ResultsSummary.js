@@ -1,7 +1,9 @@
+// libraries
 import pluralize from 'pluralize'
 import _ from 'lodash'
 import {paramCase} from 'change-case'
 
+// TODO: implement after talking with designer
 export const ResultsSummary = props => {
 
 	// TODO: configure externally

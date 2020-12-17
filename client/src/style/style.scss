@@ -1,8 +1,12 @@
 * { box-sizing: border-box; padding: 0; margin: 0; }
 html, body, #root, .wrapper { height:100%; width: 100%; overflow: hidden; }
 
+$colorBg: #E1DDD7;
+$colorFg: #8A8070;
+$colorResultsBg: #fff;
+
 body {
-	background: #E1DDD7;
+	background: $colorBg;
 	padding: 29px 45px;
 }
 
@@ -17,41 +21,41 @@ body {
 		font-size: 24px;
 	}
 
-	.search-box-wrapper {
+	.search-box {
 		display: flex;
 		flex-direction: column;
-	}
 
-	.search-box {
-		margin: 365px auto 0;
-		display: flex;
+		.search-box-top {
+			margin: 365px auto 0;
+			display: flex;
 
-		.search-inputs {
-			margin-left: 48px;
+			.search-inputs {
+				margin-left: 48px;
 
-			display:flex;
-
-			div.icon {
 				display:flex;
-				align-items: center;
-				&.search {
-					opacity: 0.3;
+
+				div.icon {
+					display:flex;
+					align-items: center;
+					&.search {
+						opacity: 0.3;
+					}
+				}
+				input {
+					width: 500px;
+					border:none;
+					background: none;
+					color: $colorFg;
+					font-size: 42px;
+					margin-left:34px;
 				}
 			}
-			input {
-				width: 500px;
-				border:none;
-				background: none;
-				color: #8A8070;
-				font-size: 42px;
-				margin-left:34px;
-			}
 		}
-	}
-	.lines {
-		margin: 14px auto;
-		width:100%;
-		text-align: center;
+		.search-box-bottom {
+			margin: 14px auto;
+			width:100%;
+			text-align: center;
+		}
 	}
 }
 
@@ -62,7 +66,7 @@ body {
 .result-box {
 	position: absolute;
 	right: 40px;
-	background: #FFFFFF;
+	background: $colorResultsBg;
 	border-radius: 6px;
 	padding: 50px 100px 32px 55px;
 	font-size: 14px;
