@@ -1,6 +1,9 @@
 # Overview
+ShakeSearch project by Thomas Gorence (https://thomas.codes)
 
-Pulley Shakesearch reference:
+https://shakesearch-thomasdotcodes.herokuapp.com/
+
+##Pulley Shakesearch reference:
 https://pulley-shakesearch.herokuapp.com/. Try searching for "Hamlet" to display
 a set of results.
 
