@@ -39,7 +39,7 @@ function App() {
 
 	const onSearch = async () => {
 		setIsLoading(true)
-		const response = await fetch(`http://localhost:3001/search?q=${searchTerm}`)
+		const response = await fetch(`/search?q=${searchTerm}`)
 		const json = await response.json()
 		// sort results in case we want to display them based on alphabetical order of book titles
 		//const sortedResults = _.sortBy(json, 'book')
